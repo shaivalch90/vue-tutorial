@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Example</title>
+</head>
+
+<body>
+    <div class="container" id="vue-tutorial">
+        <!--Binds data only once-->
+        <!--<h1 v-once>{{firstAppVar}}</h1>-->
+        <h1>{{firstAppVar}}</h1>
+        <!--'v-bind:style' binds js variables to styles and also evaluates js expressions-->
+        <h2 :style="{color: isCheckBoxSelected? selectedRadio:'black', fontFamily: 'Georgia'}">Yo {{name}} !</h2>
+        <button class="btn btn-primary" v-on:click="changeContent">Click me to change title</button>
+        <div class="row panel panel-default">
+
+            <h3>Text field with 2-way binding:</h3>
+            <label>Name:</label><input type="text" v-model="name" />
+
+            <h3>Single Checkbox</h3>
+            <input type="checkbox" v-model="isCheckBoxSelected" /> Use Radio buttons
+
+            <div class="panel panel-default">
+                <h3>Multiple Checkbox:</h3>
+                <input type="checkbox" v-model="selectedCheckBoxes" value='orange' /> Orange
+                <input type="checkbox" v-model="selectedCheckBoxes" value='apple' /> Apple
+                <input type="checkbox" v-model="selectedCheckBoxes" value='pineapple' /> Pineapple
+                <input type="checkbox" v-model="selectedCheckBoxes" value='grapes' /> Grapes
+
+                <div v-if="selectedCheckBoxes.length===0">{{selectedCheckBoxes.length}}
+                    <h3>None selected</h3>
+                </div>
+                <div v-else-if="selectedCheckBoxes.length==1">
+                    <h3>Only one selected: {{selectedCheckBoxes[0]}}</h3>
+                </div>
+                <div v-else>
+                    <h3>Checkboxes Selected using v-for:</h3>
+                    <ul>
+                        <li v-for="fruit in selectedCheckBoxes">{{fruit}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Radio Buttons: {{selectedRadio}}</h3>
+            <input type="radio" v-model="selectedRadio" value='orange' /> Orange
+            <input type="radio" v-model="selectedRadio" value='blue' /> Blue
+            <input type="radio" v-model="selectedRadio" value='red' /> Red
+            <input type="radio" v-model="selectedRadio" value='yellow' /> Yellow
+
+            <h3 :style="{fontSize: selectedDropdown}">Single Dropdown: {{selectedDropdown}}</h3>
+            Select value from Dropdown for fontSize:
+            <select v-model="selectedDropdown">
+                <option value="10px">10</option>
+                <option value="20px">20</option>
+                <option value="30px">30</option>
+                <option value="40px">40</option>
+            </select>
+
+            <container-component :style="{marginTop: '10px'}"></container-component>
+
+
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
