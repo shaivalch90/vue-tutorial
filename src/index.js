@@ -1,7 +1,7 @@
 const Vue = require('shaival');
 
 //Registers Component
-require('./scripts/containerComponent');
+// require('./scripts/containerComponent');
 
 let myApp = new Vue({
   el: '#vue-tutorial',
@@ -13,6 +13,7 @@ let myApp = new Vue({
     selectedRadio: 'orange',
     selectedDropdown: '',
     selectedMultiDropdown: [],
+    link: 'google'
   },
   methods: {
     changeContent: function () {

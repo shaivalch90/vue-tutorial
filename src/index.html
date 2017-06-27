@@ -11,13 +11,17 @@
         <!--Binds data only once-->
         <!--<h1 v-once>{{firstAppVar}}</h1>-->
         <h1>{{firstAppVar}}</h1>
+        <a :href="`https://www.${link}.com`" target="_blank"> Try Me</a>
         <!--'v-bind:style' binds js variables to styles and also evaluates js expressions-->
         <h2 :style="{color: isCheckBoxSelected? selectedRadio:'black', fontFamily: 'Georgia'}">Yo {{name}} !</h2>
         <button class="btn btn-primary" v-on:click="changeContent">Click me to change title</button>
         <div class="row panel panel-default">
 
             <h3>Text field with 2-way binding:</h3>
-            <label>Name:</label><input type="text" v-model="name" />
+            <label>Name:</label>
+            <!--This line is what binds data two way-->
+            <!--<input type="text" :value="name" @input="name=$event.target.value" />-->
+            <input type="text" v-model="name" />
 
             <h3>Single Checkbox</h3>
             <input type="checkbox" v-model="isCheckBoxSelected" /> Use Radio buttons

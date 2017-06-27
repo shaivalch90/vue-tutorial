@@ -16,15 +16,16 @@ const jQueryPlugin = new webpack.ProvidePlugin({
         });
 var entryPoints = [
         './src/index.js',
+        'font-awesome/css/font-awesome.css',
         'bootstrap/dist/css/bootstrap.css',
         'bootstrap/dist/css/bootstrap-theme.css',
         './src/styles/custom.scss'];
 
 // Glob sync gets all th files in the folder and adds to an array
-// _.concat(entryPoint, glob.sync('./src/scripts/*.js'))
+// _.concat(glob.sync('./src/scripts/*.js'), entryPoints)
 
 module.exports = {
-    entry: entryPoints,
+    entry: _.concat(glob.sync('./src/scripts/*.js'), entryPoints),
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
